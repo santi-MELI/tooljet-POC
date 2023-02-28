@@ -16,9 +16,9 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import config from 'config';
 import { isEmpty } from 'lodash';
 import { Card } from '@/_ui/Card';
-import { withTranslation, useTranslation } from 'react-i18next';
 import { camelizeKeys, decamelizeKeys } from 'humps';
 
+const t = (_v, d) => d;
 class DataSourceManagerComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -172,7 +172,7 @@ class DataSourceManagerComponent extends React.Component {
           this.setState({ isSaving: false });
           this.hideModal();
           toast.success(
-            this.props.t('editor.queryManager.dataSourceManager.toast.success.dataSourceSaved', 'Datasource Saved'),
+            t('editor.queryManager.dataSourceManager.toast.success.dataSourceSaved', 'Datasource Saved'),
             { position: 'top-center' }
           );
           this.props.dataSourcesChanged();
@@ -183,7 +183,7 @@ class DataSourceManagerComponent extends React.Component {
           this.setState({ isSaving: false });
           this.hideModal();
           toast.success(
-            this.props.t('editor.queryManager.dataSourceManager.toast.success.dataSourceAdded', 'Datasource Added'),
+            t('editor.queryManager.dataSourceManager.toast.success.dataSourceAdded', 'Datasource Added'),
             { position: 'top-center' }
           );
           this.props.dataSourcesChanged();
@@ -191,7 +191,7 @@ class DataSourceManagerComponent extends React.Component {
       }
     } else {
       toast.error(
-        this.props.t(
+        t(
           'editor.queryManager.dataSourceManager.toast.error.noEmptyDsName',
           'The name of datasource should not be empty'
         ),
@@ -273,7 +273,7 @@ class DataSourceManagerComponent extends React.Component {
             queryString={this.state.queryString}
             handleBackToAllDatasources={goBacktoAllDatasources}
             darkMode={this.props.darkMode}
-            placeholder={this.props.t(
+            placeholder={t(
               'editor.queryManager.dataSourceManager.suggestAnIntegration',
               'Suggest an integration'
             )}
@@ -300,7 +300,7 @@ class DataSourceManagerComponent extends React.Component {
                 {suggestingDatasources ? (
                   <div className="suggestion-container">
                     <h4 className="justify-content-start">
-                      {this.props.t('editor.queryManager.dataSourceManager.suggestDataSource', 'Suggest Datasource')}
+                      {t('editor.queryManager.dataSourceManager.suggestDataSource', 'Suggest Datasource')}
                     </h4>
                     {datasourceSuggestionUI()}
                   </div>
@@ -334,7 +334,7 @@ class DataSourceManagerComponent extends React.Component {
                       queryString={this.state.queryString}
                       handleBackToAllDatasources={this.handleBackToAllDatasources}
                       darkMode={this.props.darkMode}
-                      placeholder={this.props.t(
+                      placeholder={t(
                         'editor.queryManager.dataSourceManager.whatLookingFor',
                         'Tell us what you were looking for?'
                       )}
@@ -418,14 +418,14 @@ class DataSourceManagerComponent extends React.Component {
         <div className="datasource-modal-sidebar-footer">
           <p>
             <span className="footer-text">
-              {this.props.t(
+              {t(
                 'editor.queryManager.dataSourceManager.noResultFound',
                 `Don't see what you were looking for?`
               )}
             </span>
             <br />
             <span className="link-span" onClick={updateSuggestionState}>
-              {this.props.t('editor.queryManager.dataSourceManager.suggest', 'Suggest')}
+              {t('editor.queryManager.dataSourceManager.suggest', 'Suggest')}
             </span>
           </p>
         </div>
@@ -638,7 +638,7 @@ class DataSourceManagerComponent extends React.Component {
               )}
               {!selectedDataSource && (
                 <span className="text-muted" data-cy="title-add-new-datasource">
-                  {this.props.t('editor.queryManager.dataSourceManager.addNewDataSource', 'Add new datasource')}
+                  {t('editor.queryManager.dataSourceManager.addNewDataSource', 'Add new datasource')}
                 </span>
               )}
             </Modal.Title>
@@ -678,7 +678,7 @@ class DataSourceManagerComponent extends React.Component {
                     </div>
                     <div className="col" style={{ maxWidth: '480px' }}>
                       <p data-cy="white-list-ip-text">
-                        {this.props.t(
+                        {t(
                           'editor.queryManager.dataSourceManager.whiteListIP',
                           'Please white-list our IP address if the data source is not publicly accessible.'
                         )}
@@ -688,7 +688,7 @@ class DataSourceManagerComponent extends React.Component {
                       {isCopied ? (
                         <center className="my-2">
                           <span className="copied" data-cy="label-ip-copied">
-                            {this.props.t('editor.queryManager.dataSourceManager.copied', 'Copied')}
+                            {t('editor.queryManager.dataSourceManager.copied', 'Copied')}
                           </span>
                         </center>
                       ) : (
@@ -715,7 +715,7 @@ class DataSourceManagerComponent extends React.Component {
                                 fill="currentColor"
                               />
                             </svg>
-                            {this.props.t('editor.queryManager.dataSourceManager.copy', 'Copy')}
+                            {t('editor.queryManager.dataSourceManager.copy', 'Copy')}
                           </button>
                         </CopyToClipboard>
                       )}
@@ -743,7 +743,7 @@ class DataSourceManagerComponent extends React.Component {
                     rel="noreferrer"
                     data-cy="link-read-documentation"
                   >
-                    {this.props.t('globals.readDocumentation', 'Read documentation')}
+                    {t('globals.readDocumentation', 'Read documentation')}
                   </a>
                 </small>
               </div>
@@ -763,7 +763,7 @@ class DataSourceManagerComponent extends React.Component {
                   variant="primary"
                   onClick={this.createDataSource}
                 >
-                  {this.props.t('globals.save', 'Save')}
+                  {t('globals.save', 'Save')}
                 </Button>
               </div>
             </Modal.Footer>
@@ -778,15 +778,15 @@ class DataSourceManagerComponent extends React.Component {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    {this.props.t('globals.readDocumentation', 'Read documentation')}
+                    {t('globals.readDocumentation', 'Read documentation')}
                   </a>
                 </small>
               </div>
               <div className="col-auto">
                 <Button className="m-2" disabled={isSaving} variant="primary" onClick={this.createDataSource}>
                   {isSaving
-                    ? this.props.t('editor.queryManager.dataSourceManager.saving' + '...', 'Saving...')
-                    : this.props.t('globals.save', 'Save')}
+                    ? t('editor.queryManager.dataSourceManager.saving' + '...', 'Saving...')
+                    : t('globals.save', 'Save')}
                 </Button>
               </div>
             </Modal.Footer>
@@ -804,7 +804,6 @@ const EmptyStateContainer = ({
   darkMode,
   placeholder,
 }) => {
-  const { t } = useTranslation();
   const [inputValue, set] = React.useState(() => '');
 
   const [status, setStatus] = React.useState(false);
@@ -870,7 +869,7 @@ const EmptyStateContainer = ({
 
 const SearchBoxContainer = ({ onChange, onClear, queryString, activeDatasourceList, dataCy }) => {
   const [searchText, setSearchText] = React.useState(queryString ?? '');
-  const { t } = useTranslation();
+
   const handleChange = (e) => {
     setSearchText(e.target.value);
     onChange(e.target.value, activeDatasourceList);
@@ -966,4 +965,4 @@ const SearchBoxContainer = ({ onChange, onClear, queryString, activeDatasourceLi
   );
 };
 
-export const DataSourceManager = withTranslation()(DataSourceManagerComponent);
+export const DataSourceManager = DataSourceManagerComponent;

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { datasourceService } from '@/_services';
-import { useTranslation } from 'react-i18next';
+
 
 import Button from '@/_ui/Button';
 
 const Slack = ({ optionchanged, createDataSource, options, isSaving, selectedDataSource }) => {
   const [authStatus, setAuthStatus] = useState(null);
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   function authGoogle() {
     const provider = 'slack';

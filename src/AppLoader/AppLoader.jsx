@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { withTranslation } from 'react-i18next';
 import { appService, organizationService, authenticationService } from '@/_services';
 import { Editor } from '../Editor/Editor';
 import { RealtimeEditor } from '@/Editor/RealtimeEditor';
@@ -60,4 +59,4 @@ const AppLoaderComponent = (props) => {
   return config.ENABLE_MULTIPLAYER_EDITING ? <RealtimeEditor {...props} /> : <Editor {...props} />;
 };
 
-export const AppLoader = withTranslation()(AppLoaderComponent);
+export const AppLoader = AppLoaderComponent;

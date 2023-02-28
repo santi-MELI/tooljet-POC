@@ -3,7 +3,7 @@ import { commentNotificationsService } from '@/_services';
 import { Notification } from './Notification';
 import { toast } from 'react-hot-toast';
 import Spinner from '@/_ui/Spinner';
-import { useTranslation } from 'react-i18next';
+
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { ToolTip } from '@/_components/ToolTip';
 
@@ -11,7 +11,7 @@ export const NotificationCenter = ({ darkMode }) => {
   const [loading, setLoading] = React.useState(false);
   const [isRead, setIsRead] = React.useState(false);
   const [commentNotifications, setCommentNotifications] = React.useState([]);
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
   async function fetchData() {
     setLoading(true);
     const { data, error } = await commentNotificationsService.findAll(isRead);

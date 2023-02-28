@@ -30,7 +30,7 @@ import { ToolTip } from '../Inspector/Elements/Components/ToolTip';
 import { toast } from 'react-hot-toast';
 import { EditorContext } from '@/Editor/Context/EditorContextWrapper';
 import { camelCase } from 'lodash';
-import { useTranslation } from 'react-i18next';
+
 
 const AllElements = {
   Color,
@@ -96,7 +96,7 @@ export function CodeHinter({
       height: isFocused ? currentHeight : 0,
     },
   });
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   const { variablesExposedForPreview } = useContext(EditorContext);
 

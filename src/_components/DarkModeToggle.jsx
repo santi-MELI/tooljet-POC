@@ -2,7 +2,6 @@ import React from 'react';
 import { useSpring, animated } from 'react-spring';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { useTranslation } from 'react-i18next';
 
 export const DarkModeToggle = function DarkModeToggle({
   darkMode = false,
@@ -13,7 +12,7 @@ export const DarkModeToggle = function DarkModeToggle({
   const toggleDarkMode = () => {
     switchDarkMode(!darkMode);
   };
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
   const properties = {
     sun: {
       r: 9,

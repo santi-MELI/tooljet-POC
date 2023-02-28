@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Select from '@/_ui/Select';
 import defaultStyles from '@/_ui/Select/styles';
 import { CodeHinter } from '../../CodeBuilder/CodeHinter';
-import { useTranslation } from 'react-i18next';
+
 
 export function SwitchPage({ getPages, currentState, event, handlerChanged, eventIndex, darkMode }) {
   const queryParamChangeHandler = (index, key, value) => {
     event.queryParams[index][key] = value;
     handlerChanged(eventIndex, 'queryParams', event.queryParams);
   };
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   const addQueryParam = () => {
     if (!event.queryParams) {

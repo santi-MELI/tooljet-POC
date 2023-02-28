@@ -12,7 +12,10 @@ import SelectSearch, { fuzzySearch } from 'react-select-search';
 import { v4 as uuidv4 } from 'uuid';
 import { EventManager } from '../EventManager';
 import { CodeHinter } from '../../CodeBuilder/CodeHinter';
-import { withTranslation } from 'react-i18next';
+
+const t = (_v, d) => d;
+
+
 class TableComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -170,7 +173,7 @@ class TableComponent extends React.Component {
         <Popover.Content>
           <div className="field mb-2" data-cy={`dropdown-column-type`}>
             <label data-cy={`label-column-type`} className="form-label">
-              {this.props.t('widget.Table.columnType', 'Column type')}
+              {t('widget.Table.columnType', 'Column type')}
             </label>
             <SelectSearch
               className={`${this.props.darkMode ? 'select-search-dark' : 'select-search'}`}
@@ -196,12 +199,12 @@ class TableComponent extends React.Component {
                 this.onColumnItemChange(index, 'columnType', value);
               }}
               filterOptions={fuzzySearch}
-              placeholder={this.props.t('globals.select', 'Select') + '...'}
+              placeholder={t('globals.select', 'Select') + '...'}
             />
           </div>
           <div className="field mb-2" data-cy={`input-and-label-column-name`}>
             <label data-cy={`label-column-name`} className="form-label">
-              {this.props.t('widget.Table.columnName', 'Column name')}
+              {t('widget.Table.columnName', 'Column name')}
             </label>
             <input
               data-cy={`input-column-name`}
@@ -217,7 +220,7 @@ class TableComponent extends React.Component {
           {(column.columnType === 'string' || column.columnType === undefined || column.columnType === 'default') && (
             <div data-cy={`input-overflow`} className="field mb-2">
               <label data-cy={`label-overflow`} className="form-label">
-                {this.props.t('widget.Table.overflow', 'Overflow')}
+                {t('widget.Table.overflow', 'Overflow')}
               </label>
               <SelectSearch
                 className={`${this.props.darkMode ? 'select-search-dark' : 'select-search'}`}
@@ -233,12 +236,12 @@ class TableComponent extends React.Component {
                   this.onColumnItemChange(index, 'textWrap', value);
                 }}
                 filterOptions={fuzzySearch}
-                placeholder={this.props.t('globals.select', 'Select') + '...'}
+                placeholder={t('globals.select', 'Select') + '...'}
               />
             </div>
           )}
           <div data-cy={`input-and-label-key`} className="field mb-2">
-            <label className="form-label">{this.props.t('widget.Table.key', 'key')}</label>
+            <label className="form-label">{t('widget.Table.key', 'key')}</label>
             <CodeHinter
               currentState={this.props.currentState}
               initialValue={column.key}
@@ -257,7 +260,7 @@ class TableComponent extends React.Component {
           {(column.columnType === 'string' || column.columnType === undefined || column.columnType === 'default') && (
             <div>
               <div data-cy={`input-and-label-text-color`} className="field mb-2">
-                <label className="form-label">{this.props.t('widget.Table.textColor', 'Text color')}</label>
+                <label className="form-label">{t('widget.Table.textColor', 'Text color')}</label>
                 <CodeHinter
                   currentState={this.props.currentState}
                   initialValue={column.textColor}
@@ -276,7 +279,7 @@ class TableComponent extends React.Component {
               </div>
               <div className="field mb-2" data-cy={`input-and-label-cell-background-color`}>
                 <label className="form-label">
-                  {this.props.t('widget.Table.cellBgColor', 'Cell Background Color')}
+                  {t('widget.Table.cellBgColor', 'Cell Background Color')}
                 </label>
                 <CodeHinter
                   currentState={this.props.currentState}
@@ -296,10 +299,10 @@ class TableComponent extends React.Component {
               {column.isEditable && (
                 <div>
                   <div data-cy={`header-validation`} className="hr-text">
-                    {this.props.t('widget.Table.validation', 'Validation')}
+                    {t('widget.Table.validation', 'Validation')}
                   </div>
                   <div data-cy={`input-and-label-regex`} className="field mb-2">
-                    <label className="form-label">{this.props.t('widget.Table.regex', 'Regex')}</label>
+                    <label className="form-label">{t('widget.Table.regex', 'Regex')}</label>
                     <CodeHinter
                       currentState={this.props.currentState}
                       initialValue={column.regex}
@@ -315,7 +318,7 @@ class TableComponent extends React.Component {
                     />
                   </div>
                   <div data-cy={`input-and-label-min-length`} className="field mb-2">
-                    <label className="form-label">{this.props.t('widget.Table.minLength', 'Min length')}</label>
+                    <label className="form-label">{t('widget.Table.minLength', 'Min length')}</label>
                     <CodeHinter
                       currentState={this.props.currentState}
                       initialValue={column.minLength}
@@ -331,7 +334,7 @@ class TableComponent extends React.Component {
                     />
                   </div>
                   <div data-cy={`input-and-label-max-length`} className="field mb-2">
-                    <label className="form-label">{this.props.t('widget.Table.maxLength', 'Max length')}</label>
+                    <label className="form-label">{t('widget.Table.maxLength', 'Max length')}</label>
                     <CodeHinter
                       currentState={this.props.currentState}
                       initialValue={column.maxLength}
@@ -347,7 +350,7 @@ class TableComponent extends React.Component {
                     />
                   </div>
                   <div data-cy={`input-and-label-custom-rule`} className="field mb-2">
-                    <label className="form-label">{this.props.t('widget.Table.customRule', 'Custom rule')}</label>
+                    <label className="form-label">{t('widget.Table.customRule', 'Custom rule')}</label>
                     <CodeHinter
                       currentState={this.props.currentState}
                       initialValue={column.customRule}
@@ -370,10 +373,10 @@ class TableComponent extends React.Component {
           {column.columnType === 'number' && column.isEditable && (
             <div>
               <div className="hr-text" data-cy={`header-validation`}>
-                {this.props.t('widget.Table.validation', 'Validation')}
+                {t('widget.Table.validation', 'Validation')}
               </div>
               <div data-cy={`input-and-label-min-value`} className="field mb-2">
-                <label className="form-label">{this.props.t('widget.Table.minValue', 'Min value')}</label>
+                <label className="form-label">{t('widget.Table.minValue', 'Min value')}</label>
                 <CodeHinter
                   currentState={this.props.currentState}
                   initialValue={column.minLength}
@@ -389,7 +392,7 @@ class TableComponent extends React.Component {
                 />
               </div>
               <div data-cy={`input-and-label-max-value`} className="field mb-2">
-                <label className="form-label">{this.props.t('widget.Table.maxValue', 'Max value')}</label>
+                <label className="form-label">{t('widget.Table.maxValue', 'Max value')}</label>
                 <CodeHinter
                   currentState={this.props.currentState}
                   initialValue={column.maxLength}
@@ -447,7 +450,7 @@ class TableComponent extends React.Component {
             column.columnType === 'radio') && (
             <div>
               <div data-cy={`input-and-label-values`} className="field mb-2">
-                <label className="form-label">{this.props.t('widget.Table.values', 'Values')}</label>
+                <label className="form-label">{t('widget.Table.values', 'Values')}</label>
                 <CodeHinter
                   currentState={this.props.currentState}
                   initialValue={column.values}
@@ -463,7 +466,7 @@ class TableComponent extends React.Component {
                 />
               </div>
               <div data-cy={`input-and-label-labels`} className="field mb-2">
-                <label className="form-label">{this.props.t('widget.Table.labels', 'Labels')}</label>
+                <label className="form-label">{t('widget.Table.labels', 'Labels')}</label>
                 <CodeHinter
                   currentState={this.props.currentState}
                   initialValue={column.labels}
@@ -486,10 +489,10 @@ class TableComponent extends React.Component {
               {column.isEditable && (
                 <div>
                   <div data-cy={`header-validations`} className="hr-text">
-                    {this.props.t('widget.Table.validation', 'Validation')}
+                    {t('widget.Table.validation', 'Validation')}
                   </div>
                   <div data-cy={`input-and-label-custom-rule`} className="field mb-2">
-                    <label className="form-label">{this.props.t('widget.Table.customRule', 'Custom Rule')}</label>
+                    <label className="form-label">{t('widget.Table.customRule', 'Custom Rule')}</label>
                     <CodeHinter
                       currentState={this.props.currentState}
                       initialValue={column.customRule}
@@ -512,7 +515,7 @@ class TableComponent extends React.Component {
           {column.columnType === 'datepicker' && (
             <div>
               <label data-cy={`label-date-display-format`} className="form-label">
-                {this.props.t('widget.Table.dateDisplayformat', 'Date Display Format')}
+                {t('widget.Table.dateDisplayformat', 'Date Display Format')}
               </label>
               <div data-cy={`input-date-display-format`} className="field mb-2">
                 <CodeHinter
@@ -530,7 +533,7 @@ class TableComponent extends React.Component {
                 />
               </div>
               <label data-cy={`label-date-parse-format`} className="form-label">
-                {this.props.t('widget.Table.dateParseformat', 'Date Parse Format')}
+                {t('widget.Table.dateParseformat', 'Date Parse Format')}
               </label>
               <div className="field mb-2">
                 <input
@@ -591,7 +594,7 @@ class TableComponent extends React.Component {
                     checked={column.isTimeChecked}
                   />
                   <span data-cy={`label-show-time`} className="form-check-label">
-                    {this.props.t('widget.Table.showTime', 'show time')}
+                    {t('widget.Table.showTime', 'show time')}
                   </span>
                 </div>
               </div>
@@ -600,7 +603,7 @@ class TableComponent extends React.Component {
           {column.columnType === 'image' && (
             <>
               <div data-cy={`input-and-label-border-radius`} className="field mb-2">
-                <label className="form-label">{this.props.t('widget.Table.borderRadius', 'Border radius')}</label>
+                <label className="form-label">{t('widget.Table.borderRadius', 'Border radius')}</label>
                 <CodeHinter
                   currentState={this.props.currentState}
                   initialValue={column.borderRadius}
@@ -613,7 +616,7 @@ class TableComponent extends React.Component {
                 />
               </div>
               <div data-cy={`input-and-label-width`} className="field mb-2">
-                <label className="form-label">{this.props.t('widget.Table.width', 'Width')}</label>
+                <label className="form-label">{t('widget.Table.width', 'Width')}</label>
                 <CodeHinter
                   currentState={this.props.currentState}
                   initialValue={column.width}
@@ -626,7 +629,7 @@ class TableComponent extends React.Component {
                 />
               </div>
               <div data-cy={`input-and-label-height`} className="field mb-2">
-                <label className="form-label">{this.props.t('widget.Table.height', 'Height')}</label>
+                <label className="form-label">{t('widget.Table.height', 'Height')}</label>
                 <CodeHinter
                   currentState={this.props.currentState}
                   initialValue={column.height}
@@ -639,7 +642,7 @@ class TableComponent extends React.Component {
                 />
               </div>
               <div data-cy={`input-and-label-object-fit`} className="field mb-2">
-                <label className="form-label">{this.props.t('widget.Table.objectFit', 'Object fit')}</label>
+                <label className="form-label">{t('widget.Table.objectFit', 'Object fit')}</label>
                 <SelectSearch
                   className={`${this.props.darkMode ? 'select-search-dark' : 'select-search'}`}
                   options={[
@@ -654,7 +657,7 @@ class TableComponent extends React.Component {
                     this.onColumnItemChange(index, 'objectFit', value);
                   }}
                   filterOptions={fuzzySearch}
-                  placeholder={this.props.t('Select') + '...'}
+                  placeholder={t('Select') + '...'}
                 />
               </div>
             </>
@@ -670,7 +673,7 @@ class TableComponent extends React.Component {
                 checked={column.isEditable}
               />
               <span data-cy={`label-make-editable`} className="form-check-label">
-                {this.props.t('widget.Table.makeEditable', 'make editable')}
+                {t('widget.Table.makeEditable', 'make editable')}
               </span>
             </div>
           )}
@@ -693,7 +696,7 @@ class TableComponent extends React.Component {
         <Popover.Content>
           <div className="field mb-2">
             <label data-cy={`label-action-button-text`} className="form-label">
-              {this.props.t('widget.Table.buttonText', 'Button Text')}
+              {t('widget.Table.buttonText', 'Button Text')}
             </label>
             <input
               data-cy={`action-button-text-input-field`}
@@ -708,7 +711,7 @@ class TableComponent extends React.Component {
           </div>
           <div className="field mb-2" data-cy={`dropdown-action-button-position`}>
             <label data-cy={`label-action-button-position`} className="form-label">
-              {this.props.t('widget.Table.buttonPosition', 'Button Position')}
+              {t('widget.Table.buttonPosition', 'Button Position')}
             </label>
             <SelectSearch
               className={`${this.props.darkMode ? 'select-search-dark' : 'select-search'}`}
@@ -758,7 +761,7 @@ class TableComponent extends React.Component {
             pages={this.props.pages}
           />
           <button className="btn btn-sm btn-outline-danger mt-2 col" onClick={() => this.removeAction(index)}>
-            {this.props.t('widget.Table.remove', 'Remove')}
+            {t('widget.Table.remove', 'Remove')}
           </button>
         </Popover.Content>
       </Popover>
@@ -931,7 +934,7 @@ class TableComponent extends React.Component {
               onClick={this.addNewColumn}
               className="btn btn-sm border-0 font-weight-normal padding-2 col-auto color-primary inspector-add-button"
             >
-              {this.props.t('widget.Table.addColumn', '+ Add column')}
+              {t('widget.Table.addColumn', '+ Add column')}
             </button>
           </div>
           <DragDropContext
@@ -1017,7 +1020,7 @@ class TableComponent extends React.Component {
                 onClick={this.addNewAction}
                 className="btn btn-sm border-0 font-weight-normal padding-2 col-auto color-primary inspector-add-button"
               >
-                {this.props.t('widget.Table.addButton', '+ Add button')}
+                {t('widget.Table.addButton', '+ Add button')}
               </button>
             </div>
           </div>
@@ -1025,7 +1028,7 @@ class TableComponent extends React.Component {
           {actions.value.length === 0 && (
             <div className="text-center">
               <small data-cy="message-no-action-button" className="color-disabled">
-                {this.props.t('widget.Table.noActionMessage', "This table doesn't have any action buttons")}
+                {t('widget.Table.noActionMessage', "This table doesn't have any action buttons")}
               </small>
             </div>
           )}
@@ -1121,4 +1124,4 @@ class TableComponent extends React.Component {
   }
 }
 
-export const Table = withTranslation()(TableComponent);
+export const Table = TableComponent;

@@ -4,7 +4,7 @@ import { Button, HeaderSection } from '@/_ui/LeftSidebar';
 import { LeftSidebarItem } from './SidebarItem';
 import _ from 'lodash';
 import moment from 'moment';
-import { useTranslation } from 'react-i18next';
+
 import JSONTreeViewer from '@/_ui/JSONTreeViewer';
 
 export const LeftSidebarDebugger = ({
@@ -16,7 +16,7 @@ export const LeftSidebarDebugger = ({
   currentPageId,
   popoverContentHeight,
 }) => {
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
   const [open, setOpen] = useState(false);
   const [pinned, setPinned] = useState(false);
   const [errorLogs, setErrorLogs] = React.useState([]);

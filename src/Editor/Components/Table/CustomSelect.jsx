@@ -1,9 +1,9 @@
 import React from 'react';
 import SelectSearch from 'react-select-search';
-import { useTranslation } from 'react-i18next';
+
 
 export const CustomSelect = ({ options, value, multiple, onChange, darkMode, isEditable }) => {
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   function renderValue(valueProps) {
     if (!isEditable) {

@@ -65,7 +65,7 @@ import {
 } from './component-properties-resolution';
 import _ from 'lodash';
 import { EditorContext } from '@/Editor/Context/EditorContextWrapper';
-import { useTranslation } from 'react-i18next';
+
 
 const AllComponents = {
   Hero,
@@ -149,7 +149,7 @@ export const Box = function Box({
   readOnly,
   childComponents,
 }) {
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
   const backgroundColor = yellow ? 'yellow' : '';
 
   let styles = {

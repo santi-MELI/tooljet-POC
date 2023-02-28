@@ -5,7 +5,7 @@ import { componentTypes } from '../WidgetManager/components';
 import { DataSourceTypes } from '../DataSourceManager/SourceComponents';
 import { debounce } from 'lodash';
 import Fuse from 'fuse.js';
-import { useTranslation } from 'react-i18next';
+
 
 export function CodeBuilder({ initialValue, onChange, components, dataQueries }) {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -13,7 +13,7 @@ export function CodeBuilder({ initialValue, onChange, components, dataQueries })
   const [currentValue, setCurrentValue] = useState(initialValue);
   const [codeMirrorInstance, setCodeMirrorInstance] = useState(null);
   const [currentWord, setCurrentWord] = useState('');
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   function computeCurrentWord(value, _cursorPosition) {
     const sliced = value

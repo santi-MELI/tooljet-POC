@@ -6,7 +6,7 @@ import TextareaMentions from '@/_ui/Mentions';
 import Button from '@/_ui/Button';
 import usePopover from '@/_hooks/use-popover';
 import { useHotkeys } from 'react-hotkeys-hook';
-import { useTranslation } from 'react-i18next';
+
 
 function CommentFooter({
   searchUser,
@@ -19,7 +19,7 @@ function CommentFooter({
   const [comment, setComment] = React.useState(editComment);
   const [loading, setLoading] = React.useState(false);
   const [open, trigger, content, setOpen] = usePopover(false);
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   React.useEffect(() => {
     setComment(editComment);

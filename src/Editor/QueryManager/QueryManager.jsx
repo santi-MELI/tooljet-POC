@@ -11,7 +11,7 @@ import { DataSourceTypes } from '../DataSourceManager/SourceComponents';
 import Preview from './Preview';
 import DataSourceLister from './DataSourceLister';
 import _, { isEmpty, isEqual, capitalize } from 'lodash';
-import { withTranslation } from 'react-i18next';
+
 import cx from 'classnames';
 // eslint-disable-next-line import/no-unresolved
 import { diff } from 'deep-object-diff';
@@ -25,6 +25,9 @@ const staticDataSources = [
   { kind: 'runjs', id: 'runjs', name: 'Run JavaScript code' },
   { kind: 'runpy', id: 'runpy', name: 'Run Python code' },
 ];
+
+const t = (_v, d) => d;
+
 
 class QueryManagerComponent extends React.Component {
   constructor(props) {
@@ -634,7 +637,7 @@ class QueryManagerComponent extends React.Component {
                     />
                   </svg>
                 </span>
-                <span>{this.props.t('editor.queryManager.preview', 'Preview')}</span>
+                <span>{t('editor.queryManager.preview', 'Preview')}</span>
               </button>
             )}
             {selectedDataSource && (addingQuery || editingQuery) && (
@@ -724,7 +727,7 @@ class QueryManagerComponent extends React.Component {
                 <div className="datasource-picker">
                   {!this.state.isSourceSelected && (
                     <label className="form-label col-md-3" data-cy={'label-select-datasource'}>
-                      {this.props.t('editor.queryManager.selectDatasource', 'Select Datasource')}
+                      {t('editor.queryManager.selectDatasource', 'Select Datasource')}
                     </label>
                   )}{' '}
                   {!this.state.isSourceSelected && (
@@ -789,7 +792,7 @@ class QueryManagerComponent extends React.Component {
                       toggleSwitchFunction={this.toggleOption}
                       action="runOnPageLoad"
                       darkMode={this.props.darkMode}
-                      label={this.props.t(
+                      label={t(
                         'editor.queryManager.runQueryOnApplicationLoad',
                         'Run this query on application load?'
                       )}
@@ -802,7 +805,7 @@ class QueryManagerComponent extends React.Component {
                       toggleSwitchFunction={this.toggleOption}
                       action="requestConfirmation"
                       darkMode={this.props.darkMode}
-                      label={this.props.t(
+                      label={t(
                         'editor.queryManager.confirmBeforeQueryRun',
                         'Request confirmation before running query?'
                       )}
@@ -815,7 +818,7 @@ class QueryManagerComponent extends React.Component {
                       toggleSwitchFunction={this.toggleOption}
                       action="showSuccessNotification"
                       darkMode={this.props.darkMode}
-                      label={this.props.t('editor.queryManager.notificationOnSuccess', 'Show notification on success?')}
+                      label={t('editor.queryManager.notificationOnSuccess', 'Show notification on success?')}
                     />
                   </div>
                   {this.state.options.showSuccessNotification && (
@@ -823,7 +826,7 @@ class QueryManagerComponent extends React.Component {
                       <div className="row mt-1">
                         <div className="col-auto" style={{ width: '200px' }}>
                           <label className="form-label p-2 font-size-12" data-cy={'label-success-message-input'}>
-                            {this.props.t('editor.queryManager.successMessage', 'Success Message')}
+                            {t('editor.queryManager.successMessage', 'Success Message')}
                           </label>
                         </div>
                         <div className="col">
@@ -833,7 +836,7 @@ class QueryManagerComponent extends React.Component {
                             height="36px"
                             theme={this.props.darkMode ? 'monokai' : 'default'}
                             onChange={(value) => this.optionchanged('successMessage', value)}
-                            placeholder={this.props.t(
+                            placeholder={t(
                               'editor.queryManager.queryRanSuccessfully',
                               'Query ran successfully'
                             )}
@@ -844,7 +847,7 @@ class QueryManagerComponent extends React.Component {
                       <div className="row mt-3">
                         <div className="col-auto" style={{ width: '200px' }}>
                           <label className="form-label p-2 font-size-12" data-cy={'label-notification-duration-input'}>
-                            {this.props.t('editor.queryManager.notificationDuration', 'Notification duration (s)')}
+                            {t('editor.queryManager.notificationDuration', 'Notification duration (s)')}
                           </label>
                         </div>
                         <div className="col query-manager-input-elem">
@@ -869,7 +872,7 @@ class QueryManagerComponent extends React.Component {
                   }`}
                   style={{ paddingTop: '28px' }}
                 >
-                  {this.props.t('editor.queryManager.eventsHandler', 'Events Handler')}
+                  {t('editor.queryManager.eventsHandler', 'Events Handler')}
                 </div>
                 <div className="query-manager-events px-4 mt-2 pb-4">
                   <EventManager
@@ -897,4 +900,4 @@ class QueryManagerComponent extends React.Component {
   }
 }
 
-export const QueryManager = withTranslation()(React.memo(QueryManagerComponent));
+export const QueryManager = React.memo(QueryManagerComponent);

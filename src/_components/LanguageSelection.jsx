@@ -4,33 +4,14 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { SearchBox } from './SearchBox';
 import { ListGroup } from 'react-bootstrap';
-// eslint-disable-next-line import/no-unresolved
-import i18n from 'i18next';
 import { isEqual } from 'lodash';
-import { useTranslation } from 'react-i18next';
 
 export const LanguageSelection = ({ darkMode = false, tooltipPlacement = 'bottom' }) => {
   const [showModal, setShow] = useState(false);
   const [selectedLang, setLanguage] = useState({});
   const [filteredLang, setFilteredLang] = useState([]);
   const languageRef = useRef(null);
-  const { t } = useTranslation();
-
-  useEffect(() => {
-    const lang = i18n.language || 'en';
-    (async () => {
-      languageRef.current = await fetch('/assets/translations/languages.json')
-        .then((response) => response.json())
-        .then((data) => data.languageList);
-      const filteredLanguage = languageRef.current.find((ln) => ln.code === lang);
-      if (filteredLanguage === undefined) {
-        setLanguage(languageRef.current.find((ln) => ln.code === 'en'));
-      } else {
-        setLanguage(filteredLanguage);
-      }
-      setFilteredLang(languageRef.current);
-    })();
-  }, []);
+  const t = (_v, d) => d;
 
   const handleClose = () => {
     setShow(false);
@@ -42,7 +23,6 @@ export const LanguageSelection = ({ darkMode = false, tooltipPlacement = 'bottom
 
   const onLanguageSelection = (lang) => {
     setLanguage(lang);
-    i18n.changeLanguage(lang.code);
     handleClose();
   };
 

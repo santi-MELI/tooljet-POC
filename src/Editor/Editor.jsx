@@ -17,7 +17,9 @@ import { LeftSidebar } from './LeftSidebar';
 import { componentTypes } from './WidgetManager/components';
 import { Inspector } from './Inspector/Inspector';
 import { DataSourceTypes } from './DataSourceManager/SourceComponents';
-import { QueryManager, QueryPanel } from './QueryManager';
+// import { QueryManager, QueryPanel } from './QueryManager';
+
+
 import {
   onComponentOptionChanged,
   onComponentOptionsChanged,
@@ -48,7 +50,7 @@ import RealtimeCursors from '@/Editor/RealtimeCursors';
 import { initEditorWalkThrough } from '@/_helpers/createWalkThrough';
 import { EditorContextWrapper } from './Context/EditorContextWrapper';
 import Selecto from 'react-selecto';
-import { withTranslation } from 'react-i18next';
+
 import { v4 as uuid } from 'uuid';
 import Skeleton from 'react-loading-skeleton';
 import EmptyQueriesIllustration from '@assets/images/icons/no-queries-added.svg';
@@ -57,6 +59,7 @@ import EditorHeader from './Header';
 setAutoFreeze(false);
 enablePatches();
 
+const t = (_v, d) => d;
 class EditorComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -2024,7 +2027,7 @@ class EditorComponent extends React.Component {
                                     dataCy={`query-manager`}
                                     width="100%"
                                     onSubmit={this.filterQueries}
-                                    placeholder={this.props.t('globals.search', 'Search')}
+                                    placeholder={t('globals.search', 'Search')}
                                     customClass="query-manager-search-box-wrapper"
                                   />
                                 </div>
@@ -2166,7 +2169,7 @@ class EditorComponent extends React.Component {
                       ></Inspector>
                     ) : (
                       <center className="mt-5 p-2">
-                        {this.props.t('editor.inspectComponent', 'Please select a component to inspect')}
+                        {t('editor.inspectComponent', 'Please select a component to inspect')}
                       </center>
                     )}
                   </div>
@@ -2197,4 +2200,4 @@ class EditorComponent extends React.Component {
   }
 }
 
-export const Editor = withTranslation()(EditorComponent);
+export const Editor = EditorComponent;

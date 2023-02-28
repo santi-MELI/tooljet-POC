@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
 
 export const Pagination = function Pagination({ currentPage, count, pageChanged, itemsPerPage = 10, darkMode }) {
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
   const totalPages = useMemo(() => {
     return Math.floor((count - 1) / itemsPerPage) + 1;
   }, [count, itemsPerPage]);

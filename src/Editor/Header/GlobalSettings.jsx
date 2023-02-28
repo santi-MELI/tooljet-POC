@@ -9,7 +9,7 @@ import { LeftSidebarItem } from '../LeftSidebar/SidebarItem';
 import FxButton from '../CodeBuilder/Elements/FxButton';
 import { CodeHinter } from '../CodeBuilder/CodeHinter';
 import { resolveReferences } from '@/_helpers/utils';
-import { useTranslation } from 'react-i18next';
+
 import _ from 'lodash';
 
 export const GlobalSettings = ({
@@ -20,7 +20,7 @@ export const GlobalSettings = ({
   is_maintenance_on,
   currentState,
 }) => {
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
   const { hideHeader, canvasMaxWidth, canvasMaxWidthType, canvasMaxHeight, canvasBackgroundColor, backgroundFxQuery } =
     globalSettings;
   const [showPicker, setShowPicker] = React.useState(false);

@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { datasourceService } from '@/_services';
 import { toast } from 'react-hot-toast';
-import { useTranslation } from 'react-i18next';
 
 import Radio from '@/_ui/Radio';
 import Button from '@/_ui/Button';
 
 const Googlesheets = ({ optionchanged, createDataSource, options, isSaving, selectedDataSource }) => {
   const [authStatus, setAuthStatus] = useState(null);
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   function authGoogle() {
     const provider = 'googlesheets';

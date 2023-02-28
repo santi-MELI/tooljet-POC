@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { withTranslation } from 'react-i18next';
+
+const t = (_v, d) => d;
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -20,11 +21,11 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return this.props.showFallback ? <h2>{this.props.t('errorBoundary', 'Something went wrong.')}</h2> : <div></div>;
+      return this.props.showFallback ? <h2>{t('errorBoundary', 'Something went wrong.')}</h2> : <div></div>;
     }
 
     return this.props.children;
   }
 }
 
-export default withTranslation()(ErrorBoundary);
+export default ErrorBoundary;

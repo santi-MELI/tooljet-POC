@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import { history } from '@/_helpers';
 import { authenticationService, tooljetService } from '@/_services';
 import { Viewer } from '@/Editor';
@@ -47,14 +47,14 @@ class App extends React.Component {
 
     return (
       <Suspense fallback={null}>
-        <BrowserRouter history={history} basename={window.public_config?.SUB_PATH || '/'}>
+        <HashRouter history={history} base={window.public_config?.SUB_PATH || '/'}>
           <div className="main-wrapper" data-cy="main-wrapper">
             <Route exact path="/" component={AppLoader} />
             <Route exact path="/apps/:id/:pageHandle?" component={AppLoader} />
             <Route exact path="/applications/:id/versions/:versionId/:pageHandle?" component={Viewer} />
             <Route exact path="/applications/:slug/:pageHandle?" component={Viewer} />
           </div>
-        </BrowserRouter>
+        </HashRouter>
         <Toast toastOptions={toastOptions} />
       </Suspense>
     );

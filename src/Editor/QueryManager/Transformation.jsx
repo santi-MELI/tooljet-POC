@@ -6,7 +6,7 @@ import 'codemirror/addon/search/match-highlighter';
 import 'codemirror/addon/hint/show-hint.css';
 import { CodeHinter } from '../CodeBuilder/CodeHinter';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
+
 import Select from '@/_ui/Select';
 import { useLocalStorageState } from '@/_hooks/use-local-storage';
 import _ from 'lodash';
@@ -14,7 +14,7 @@ import { CustomToggleSwitch } from './CustomToggleSwitch';
 import { queryManagerSelectComponentStyle } from '@/_ui/Select/styles';
 
 export const Transformation = ({ changeOption, currentState, options, darkMode, queryId }) => {
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   const [lang, setLang] = React.useState(options?.transformationLanguage ?? 'javascript');
 

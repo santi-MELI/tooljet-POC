@@ -8,7 +8,7 @@ import { getSvgIcon } from '@/_helpers/appUtils';
 import { datasourceService } from '@/_services';
 import { ConfirmDialog } from '@/_components';
 import toast from 'react-hot-toast';
-import { useTranslation } from 'react-i18next';
+
 import Popover from '@/_ui/Popover';
 // eslint-disable-next-line import/no-unresolved
 import TrashIcon from '@assets/images/icons/query-trash-icon.svg';
@@ -156,7 +156,7 @@ const LeftSidebarDataSourcesContainer = ({
   dataSources = [],
   toggleDataSourceManagerModal,
 }) => {
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
   return (
     <div>
       <HeaderSection darkMode={darkMode}>

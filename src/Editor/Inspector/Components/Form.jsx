@@ -2,8 +2,7 @@ import React from 'react';
 import Accordion from '@/_ui/Accordion';
 import { EventManager } from '../EventManager';
 import { renderElement } from '../Utils';
-// eslint-disable-next-line import/no-unresolved
-import i18next from 'i18next';
+
 
 export const Form = ({
   componentMeta,

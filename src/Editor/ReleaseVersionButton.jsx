@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import cx from 'classnames';
 import { appService } from '@/_services';
 import { toast } from 'react-hot-toast';
-import { useTranslation } from 'react-i18next';
+
 
 export const ReleaseVersionButton = function DeployVersionButton({
   appId,
@@ -14,7 +14,7 @@ export const ReleaseVersionButton = function DeployVersionButton({
   saveEditingVersion,
 }) {
   const [isReleasing, setIsReleasing] = useState(false);
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
   const releaseVersion = (editingVersion) => {
     setIsReleasing(true);
     saveEditingVersion();

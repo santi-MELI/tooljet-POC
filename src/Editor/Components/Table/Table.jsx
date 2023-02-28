@@ -28,7 +28,7 @@ import generateColumnsData from './columns';
 import generateActionsData from './columns/actions';
 import autogenerateColumns from './columns/autogenerateColumns';
 import IndeterminateCheckbox from './IndeterminateCheckbox';
-import { useTranslation } from 'react-i18next';
+
 // eslint-disable-next-line import/no-unresolved
 import JsPDF from 'jspdf';
 // eslint-disable-next-line import/no-unresolved
@@ -116,7 +116,7 @@ export function Table({
     ...(!isDragging && { transform: 'translate(0,0)', width: '100%' }),
     ...(isDropAnimating && { transitionDuration: '0.001s' }),
   });
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   const [tableDetails, dispatch] = useReducer(reducer, initialState());
   const [hoverAdded, setHoverAdded] = useState(false);

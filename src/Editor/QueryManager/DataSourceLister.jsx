@@ -3,7 +3,7 @@ import RunjsIcon from '../Icons/runjs.svg';
 import RunTooljetDbIcon from '../Icons/tooljetdb.svg';
 import RunpyIcon from '../Icons/runpy.svg';
 import AddIcon from '../../../assets/images/icons/add-source.svg';
-import { useTranslation } from 'react-i18next';
+
 import { getSvgIcon } from '@/_helpers/appUtils';
 
 function DataSourceLister({
@@ -15,7 +15,7 @@ function DataSourceLister({
   dataSourceModalHandler,
 }) {
   const [allSources, setAllSources] = useState([...dataSources, ...staticDataSources]);
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
   const computedStyles = {
     background: darkMode ? '#2f3c4c' : 'white',
     color: darkMode ? 'white' : '#1f2936',

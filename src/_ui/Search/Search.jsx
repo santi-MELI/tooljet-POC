@@ -1,10 +1,9 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 export const SearchBox = ({ onChange, ...restProps }) => {
   const { callback, placeholder, placeholderIcon = null, customClass = '' } = restProps;
   const [searchText, setSearchText] = React.useState('');
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   const handleChange = (e) => {
     setSearchText(e.target.value);

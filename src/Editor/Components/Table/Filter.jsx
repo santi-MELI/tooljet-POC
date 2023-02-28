@@ -1,13 +1,13 @@
 import React from 'react';
 import Select from '@/_ui/Select';
 import defaultStyles from '@/_ui/Select/styles';
-import { useTranslation } from 'react-i18next';
+
 import _ from 'lodash';
 // eslint-disable-next-line import/no-unresolved
 import { diff as deepDiff } from 'deep-object-diff';
 
 export function Filter(props) {
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   const { mergeToFilterDetails, filterDetails, setAllFilters, fireEvent, darkMode } = props;
   const { filters } = filterDetails;

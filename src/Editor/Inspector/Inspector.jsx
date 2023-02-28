@@ -16,7 +16,7 @@ import { CustomComponent } from './Components/CustomComponent';
 import { Icon } from './Components/Icon';
 import useFocus from '@/_hooks/use-focus';
 import Accordion from '@/_ui/Accordion';
-import { useTranslation } from 'react-i18next';
+
 import _ from 'lodash';
 import { useMounted } from '@/_hooks/use-mount';
 
@@ -45,7 +45,7 @@ export const Inspector = ({
   const [newComponentName, setNewComponentName] = useState(component.component.name);
   const [inputRef, setInputFocus] = useFocus();
   const [selectedTab, setSelectedTab] = useState('properties');
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   useHotkeys('backspace', () => setWidgetDeleteConfirmation(true));
   useHotkeys('escape', () => switchSidebarTab(2));

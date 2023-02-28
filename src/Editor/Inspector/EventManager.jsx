@@ -11,7 +11,7 @@ import _ from 'lodash';
 import { componentTypes } from '../WidgetManager/components';
 import Select from '@/_ui/Select';
 import defaultStyles from '@/_ui/Select/styles';
-import { useTranslation } from 'react-i18next';
+
 
 export const EventManager = ({
   component,
@@ -28,7 +28,7 @@ export const EventManager = ({
 }) => {
   const [events, setEvents] = useState(() => component.component.definition.events || []);
   const [focusedEventIndex, setFocusedEventIndex] = useState(null);
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   let actionOptions = ActionTypes.map((action) => {
     return { name: action.name, value: action.id };

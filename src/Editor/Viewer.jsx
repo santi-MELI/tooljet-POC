@@ -18,11 +18,14 @@ import queryString from 'query-string';
 import ViewerLogoIcon from './Icons/viewer-logo.svg';
 import { DataSourceTypes } from './DataSourceManager/SourceComponents';
 import { resolveReferences, safelyParseJSON, stripTrailingSlash } from '@/_helpers/utils';
-import { withTranslation } from 'react-i18next';
+
 import _ from 'lodash';
 import { Redirect } from 'react-router-dom';
 import Spinner from '@/_ui/Spinner';
 import { toast } from 'react-hot-toast';
+
+const t = (_v, d) => d;
+
 
 class ViewerComponent extends React.Component {
   constructor(props) {
@@ -465,7 +468,7 @@ class ViewerComponent extends React.Component {
           <div className="maintenance_container">
             <div className="card">
               <div className="card-body" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <h3>{this.props.t('viewer', 'Sorry!. This app is under maintenance')}</h3>
+                <h3>{t('viewer', 'Sorry!. This app is under maintenance')}</h3>
               </div>
             </div>
           </div>
@@ -574,4 +577,4 @@ class ViewerComponent extends React.Component {
   }
 }
 
-export const Viewer = withTranslation()(ViewerComponent);
+export const Viewer = ViewerComponent;

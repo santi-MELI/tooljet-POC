@@ -3,11 +3,11 @@ import Select from '@/_ui/Select';
 import { components } from 'react-select';
 import { EditOrganization } from './EditOrganization';
 import { CreateOrganization } from './CreateOrganization';
-import { useTranslation } from 'react-i18next';
+
 import { authenticationService } from '@/_services';
 
 const Menu = (props) => {
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
   const { admin } = authenticationService.currentUserValue;
 
   return (

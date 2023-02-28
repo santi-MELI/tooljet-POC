@@ -12,7 +12,7 @@ const API_URL = {
   development: `http://localhost:${process.env.TOOLJET_SERVER_PORT || 3000}`,
 };
 
-const ASSET_PATH = 'tooljet-POC';
+const ASSET_PATH = environment === 'production' ? 'tooljet-POC' : '';
 
 function stripTrailingSlash(str) {
   return str.replace(/[/]+$/, '');
@@ -137,9 +137,6 @@ module.exports = {
       test: /\.js(\?.*)?$/i,
       algorithm: 'gzip',
     }),
-    new CopyWebpackPlugin({
-      patterns: [ { from: 'assets/translations', to: 'assets/translations' } ]
-    }),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /(en)$/),
     new webpack.DefinePlugin({
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH),
@@ -162,7 +159,7 @@ module.exports = {
     // global app config object
     config: JSON.stringify({
       apiUrl: `${stripTrailingSlash(API_URL[environment]) || ''}/api`,
-      SUB_PATH: '/tooljet-POC/',
+      SUB_PATH: environment === 'production' ? '/tooljet-POC/' : '/',
       SERVER_IP: process.env.SERVER_IP,
       COMMENT_FEATURE_ENABLE: process.env.COMMENT_FEATURE_ENABLE ?? true,
       ENABLE_TOOLJET_DB: process.env.ENABLE_TOOLJET_DB ?? true,

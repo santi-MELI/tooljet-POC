@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, Autocomplete } from '@react-google-maps/api';
 import { resolveReferences, resolveWidgetFieldValue } from '@/_helpers/utils';
 import { darkModeStyles } from './styles';
-import { useTranslation } from 'react-i18next';
+
 
 export const Map = function Map({
   id,
@@ -21,7 +21,7 @@ export const Map = function Map({
 }) {
   const center = component.definition.properties.initialLocation.value;
   const defaultMarkerValue = component.definition.properties.defaultMarkers.value;
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   let defaultMarkers = [];
   try {

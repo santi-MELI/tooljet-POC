@@ -4,7 +4,6 @@ import { authenticationService, organizationService } from '@/_services';
 import Modal from '../HomePage/Modal';
 import { toast } from 'react-hot-toast';
 import { SearchBox } from './SearchBox';
-import { useTranslation } from 'react-i18next';
 
 export const Organization = function Organization({ darkMode }) {
   const isSingleOrganization = window.public_config?.DISABLE_MULTI_WORKSPACE === 'true';
@@ -18,7 +17,7 @@ export const Organization = function Organization({ darkMode }) {
   const [getOrgStatus, setGetOrgStatus] = useState('loading');
   const [isListOrganizations, setIsListOrganizations] = useState(false);
   const [newOrgName, setNewOrgName] = useState('');
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   const getAvatar = (organization) => {
     if (!organization) return;

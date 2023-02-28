@@ -1,7 +1,7 @@
 import React from 'react';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { useTranslation } from 'react-i18next';
+
 
 export const LeftSidebarItem = ({
   tip = '',
@@ -15,7 +15,7 @@ export const LeftSidebarItem = ({
   count,
   ...rest
 }) => {
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
   const displayIcon = selectedSidebarItem === icon ? `${icon}-selected` : icon;
 
   const Icon = require('@assets/images/icons/editor/left-sidebar/' + displayIcon + '.svg');

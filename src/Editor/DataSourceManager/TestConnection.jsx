@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { datasourceService } from '@/_services';
-import { useTranslation } from 'react-i18next';
+
 
 export const TestConnection = ({ kind, options, pluginId, onConnectionTestFailed, darkMode }) => {
   const [isTesting, setTestingStatus] = useState(false);
   const [connectionStatus, setConnectionStatus] = useState('unknown');
   const [buttonText, setButtonText] = useState('Test Connection');
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   useEffect(() => {
     if (isTesting) {

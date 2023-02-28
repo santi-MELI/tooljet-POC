@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import SelectSearch, { fuzzySearch } from 'react-select-search';
 import Collapse from 'react-bootstrap/Collapse';
-import { useTranslation } from 'react-i18next';
+
 
 export const QuerySelector = ({ param, definition, eventOptionUpdated, dataQueries, extraData, eventMeta }) => {
   const [open, setOpen] = useState(false);
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   function onChange(value) {
     const query = dataQueries.find((dataquery) => dataquery.id === value);

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { appVersionService } from '@/_services';
 import AlertDialog from '@/_ui/AlertDialog';
 import { toast } from 'react-hot-toast';
-import { useTranslation } from 'react-i18next';
+
 
 export const EditVersion = ({
   appId,
@@ -14,7 +14,7 @@ export const EditVersion = ({
 }) => {
   const [isEditingVersion, setIsEditingVersion] = useState(false);
   const [versionName, setVersionName] = useState(editingVersion?.name || '');
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   const editVersion = () => {
     if (versionName.trim() === '') {

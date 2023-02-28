@@ -2,7 +2,7 @@ import React from 'react';
 import Select from '@/_ui/Select';
 import DOMPurify from 'dompurify';
 import { CodeHinter } from '../../CodeBuilder/CodeHinter';
-import { withTranslation } from 'react-i18next';
+
 import { queryManagerSelectComponentStyle } from '@/_ui/Select/styles';
 
 const operationColorMapping = {
@@ -13,6 +13,9 @@ const operationColorMapping = {
   patch: 'orange',
   head: 'blue',
 };
+
+const t = (_v, d) => d;
+
 
 class OpenapiComponent extends React.Component {
   constructor(props) {
@@ -217,7 +220,7 @@ class OpenapiComponent extends React.Component {
     return (
       <div>
         {!spec && (
-          <div className="p-3">{this.props.t('openApi.noValidOpenApi', 'Valid OpenAPI Spec is not available!.')}</div>
+          <div className="p-3">{t('openApi.noValidOpenApi', 'Valid OpenAPI Spec is not available!.')}</div>
         )}
 
         {options && spec && (
@@ -225,7 +228,7 @@ class OpenapiComponent extends React.Component {
             {baseUrls.length > 0 && (
               <div className="row">
                 <div className="col-12">
-                  <label className="form-label">{this.props.t('globals.host', 'Host')}</label>
+                  <label className="form-label">{t('globals.host', 'Host')}</label>
                 </div>
                 <div className="col openapi-operation-options">
                   <Select
@@ -234,7 +237,7 @@ class OpenapiComponent extends React.Component {
                     onChange={this.changeHost}
                     width="100%"
                     customOption={this.renderHostOptions}
-                    placeholder={this.props.t('openApi.selectHost', 'Select a host')}
+                    placeholder={t('openApi.selectHost', 'Select a host')}
                     styles={queryManagerSelectComponentStyle(this.props.darkMode, '100%')}
                     useCustomStyles={true}
                   />
@@ -243,7 +246,7 @@ class OpenapiComponent extends React.Component {
             )}
             <div className="row" style={{ marginTop: '20px' }}>
               <div className="col-12">
-                <label className="form-label">{this.props.t('globals.operation', 'Operation')}</label>
+                <label className="form-label">{t('globals.operation', 'Operation')}</label>
               </div>
               <div className="col openapi-operation-options">
                 <Select
@@ -252,7 +255,7 @@ class OpenapiComponent extends React.Component {
                   onChange={this.changeOperation}
                   width="100%"
                   customOption={this.renderOperationOption}
-                  placeholder={this.props.t('openApi.selectOperation', 'Select an operation')}
+                  placeholder={t('openApi.selectOperation', 'Select an operation')}
                   styles={queryManagerSelectComponentStyle(this.props.darkMode, '100%')}
                   useCustomStyles={true}
                 />
@@ -275,7 +278,7 @@ class OpenapiComponent extends React.Component {
           <div className={`row openApi-fields-row ${this.props.darkMode && 'theme-dark'}`}>
             {headerParams.length > 0 && (
               <div className={`path-fields `}>
-                <h5 className="text-heading">{this.props.t('globals.header', 'HEADER')}</h5>
+                <h5 className="text-heading">{t('globals.header', 'HEADER')}</h5>
                 <div className="input-group-parent-container">
                   {headerParams.map((param) => (
                     <div className="input-group-wrapper" key={param.name}>
@@ -324,7 +327,7 @@ class OpenapiComponent extends React.Component {
 
             {pathParams.length > 0 && (
               <div className={`path-fields `}>
-                <h5 className="text-heading">{this.props.t('globals.path', 'PATH')}</h5>
+                <h5 className="text-heading">{t('globals.path', 'PATH')}</h5>
                 <div className="input-group-parent-container">
                   {pathParams.map((param) => (
                     <div className="input-group-wrapper" key={param.name}>
@@ -373,7 +376,7 @@ class OpenapiComponent extends React.Component {
 
             {queryParams.length > 0 && (
               <div className={`query-fields `}>
-                <h5 className="text-heading">{this.props.t('globals.query'.toUpperCase(), 'QUERY')}</h5>
+                <h5 className="text-heading">{t('globals.query'.toUpperCase(), 'QUERY')}</h5>
                 <div className="input-group-parent-container">
                   {queryParams.map((param) => (
                     <div className="input-group-wrapper" key={param.name}>
@@ -422,7 +425,7 @@ class OpenapiComponent extends React.Component {
 
             {requestBody?.schema?.properties && (
               <div className={`request-body-fields  `}>
-                <h5 className="text-heading">{this.props.t('globals.requestBody', 'REQUEST BODY')}</h5>
+                <h5 className="text-heading">{t('globals.requestBody', 'REQUEST BODY')}</h5>
                 <div
                   className={`${
                     Object.keys(requestBody.schema.properties).length >= 1 && 'input-group-parent-container'
@@ -479,4 +482,4 @@ class OpenapiComponent extends React.Component {
   }
 }
 
-export const Openapi = withTranslation()(OpenapiComponent);
+export const Openapi = OpenapiComponent;

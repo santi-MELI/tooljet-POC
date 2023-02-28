@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { authenticationService, organizationService } from '@/_services';
 import AlertDialog from '@/_ui/AlertDialog';
 import { toast } from 'react-hot-toast';
-import { useTranslation } from 'react-i18next';
+
 
 export const EditOrganization = ({ showEditOrg, setShowEditOrg }) => {
   const [isCreating, setIsCreating] = useState(false);
   const [newOrgName, setNewOrgName] = useState('');
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   const editOrganization = () => {
     if (!(newOrgName && newOrgName.trim())) {

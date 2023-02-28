@@ -8,7 +8,7 @@ import OptionsIcon from './icons/options.svg';
 import useRouter from '@/_hooks/use-router';
 
 import { commentsService } from '@/_services';
-import { useTranslation } from 'react-i18next';
+
 
 const CommentActions = ({
   socket,
@@ -22,7 +22,7 @@ const CommentActions = ({
   const [open, trigger, content, setOpen] = usePopover(false);
   const popoverFadeStyle = useSpring({ opacity: open ? 1 : 0 });
   const router = useRouter();
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   const handleDelete = async () => {
     await commentsService.deleteComment(commentId);

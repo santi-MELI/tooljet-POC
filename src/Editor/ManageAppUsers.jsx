@@ -6,8 +6,11 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Skeleton from 'react-loading-skeleton';
 import { debounce } from 'lodash';
 import Textarea from '@/_ui/Textarea';
-import { withTranslation } from 'react-i18next';
+
 import { Link } from 'react-router-dom';
+
+const t = (_v, d) => d;
+
 
 class ManageAppUsersComponent extends React.Component {
   constructor(props) {
@@ -168,7 +171,7 @@ class ManageAppUsersComponent extends React.Component {
           contentClassName={this.props.darkMode ? 'theme-dark' : ''}
         >
           <Modal.Header>
-            <Modal.Title>{this.props.t('editor.share', 'Share')}</Modal.Title>
+            <Modal.Title>{t('editor.share', 'Share')}</Modal.Title>
             <button className="btn-close" aria-label="Close" onClick={this.hideModal} data-cy="modal-close-button" />
           </Modal.Header>
           <Modal.Body>
@@ -188,14 +191,14 @@ class ManageAppUsersComponent extends React.Component {
                       disabled={this.state.ischangingVisibility}
                     />
                     <span className="form-check-label">
-                      {this.props.t('editor.shareModal.makeApplicationPublic', 'Make application public?')}
+                      {t('editor.shareModal.makeApplicationPublic', 'Make application public?')}
                     </span>
                   </div>
                 </div>
                 <div className="shareable-link mb-3">
                   <label className="form-label">
                     <small>
-                      {this.props.t('editor.shareModal.shareableLink', 'Get shareable link for this application')}
+                      {t('editor.shareModal.shareableLink', 'Get shareable link for this application')}
                     </small>
                   </label>
                   <div className="input-group">
@@ -220,7 +223,7 @@ class ManageAppUsersComponent extends React.Component {
                     <span className="input-group-text">
                       <CopyToClipboard text={shareableLink} onCopy={() => toast.success('Link copied to clipboard')}>
                         <button className="btn btn-secondary btn-sm">
-                          {this.props.t('editor.shareModal.copy', 'copy')}
+                          {t('editor.shareModal.copy', 'copy')}
                         </button>
                       </CopyToClipboard>
                     </span>
@@ -231,7 +234,7 @@ class ManageAppUsersComponent extends React.Component {
                 <div className="shareable-link mb-3">
                   <label className="form-label">
                     <small>
-                      {this.props.t('editor.shareModal.embeddableLink', 'Get embeddable link for this application')}
+                      {t('editor.shareModal.embeddableLink', 'Get embeddable link for this application')}
                     </small>
                   </label>
                   <div className="input-group">
@@ -247,7 +250,7 @@ class ManageAppUsersComponent extends React.Component {
                         onCopy={() => toast.success('Embeddable link copied to clipboard')}
                       >
                         <button className="btn btn-secondary btn-sm">
-                          {this.props.t('editor.shareModal.copy', 'copy')}
+                          {t('editor.shareModal.copy', 'copy')}
                         </button>
                       </CopyToClipboard>
                     </span>
@@ -270,4 +273,4 @@ class ManageAppUsersComponent extends React.Component {
   }
 }
 
-export const ManageAppUsers = withTranslation()(ManageAppUsersComponent);
+export const ManageAppUsers = ManageAppUsersComponent;

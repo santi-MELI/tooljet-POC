@@ -1,12 +1,12 @@
 import React from 'react';
 import FxButton from './FxButton';
-import { useTranslation } from 'react-i18next';
+
 
 export const AlignButtons = ({ value, onChange, forceCodeBox, meta }) => {
   function handleOptionChanged(event) {
     onChange(event.currentTarget.value);
   }
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   return (
     <div className="row fx-container">

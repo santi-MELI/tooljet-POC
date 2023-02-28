@@ -4,12 +4,12 @@ import { authenticationService } from '@/_services';
 import { history } from '@/_helpers';
 import Avatar from '@/_ui/Avatar';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import { useTranslation } from 'react-i18next';
+
 import { ToolTip } from '@/_components/ToolTip';
 
 export const Profile = function Header({ switchDarkMode, darkMode }) {
   const { first_name, last_name, avatar_id } = authenticationService.currentUserValue;
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   function logout() {
     authenticationService.logout();

@@ -4,7 +4,7 @@ import DOMPurify from 'dompurify';
 import Select from '@/_ui/Select';
 import { openapiService } from '@/_services';
 import { CodeHinter } from '../../CodeBuilder/CodeHinter';
-import { withTranslation } from 'react-i18next';
+
 import { queryManagerSelectComponentStyle } from '@/_ui/Select/styles';
 
 const operationColorMapping = {
@@ -13,6 +13,8 @@ const operationColorMapping = {
   delete: 'red',
   put: 'yellow',
 };
+
+const t = (_v, d) => d;
 
 class StripeComponent extends React.Component {
   constructor(props) {
@@ -180,7 +182,7 @@ class StripeComponent extends React.Component {
         {loadingSpec && (
           <div className="p-3">
             <div className="spinner-border spinner-border-sm text-azure mx-2" role="status"></div>
-            {this.props.t('stripe', 'Please wait while we load the OpenAPI specification for Stripe.')}
+            {t('stripe', 'Please wait while we load the OpenAPI specification for Stripe.')}
           </div>
         )}
 
@@ -188,7 +190,7 @@ class StripeComponent extends React.Component {
           <div>
             <div className="row g-2">
               <div className="col-12">
-                <label className="form-label">{this.props.t('globals.operation', 'Operation')}</label>
+                <label className="form-label">{t('globals.operation', 'Operation')}</label>
               </div>
               <div className="col stripe-operation-options" style={{ width: '90px', marginTop: 0 }}>
                 <Select
@@ -216,7 +218,7 @@ class StripeComponent extends React.Component {
               <div className={`row stripe-fields-row ${this.props.darkMode && 'theme-dark'}`}>
                 {pathParams.length > 0 && (
                   <div className={`path-fields ${Object.keys(requestBody.schema.properties).length === 0 && 'd-none'}`}>
-                    <h5 className="text-heading">{this.props.t('globals.path', 'PATH')}</h5>
+                    <h5 className="text-heading">{t('globals.path', 'PATH')}</h5>
                     <div className="input-group-parent-container">
                       {pathParams.map((param) => (
                         <div className="input-group-wrapper" key={param.name}>
@@ -272,7 +274,7 @@ class StripeComponent extends React.Component {
                   <div
                     className={`query-fields ${Object.keys(requestBody.schema.properties).length === 0 && 'd-none'}`}
                   >
-                    <h5 className="text-heading">{this.props.t('globals.query'.toUpperCase(), 'QUERY')}</h5>
+                    <h5 className="text-heading">{t('globals.query'.toUpperCase(), 'QUERY')}</h5>
                     <div className="input-group-parent-container">
                       {queryParams.map((param) => (
                         <div className="input-group-wrapper" key={param.name}>
@@ -331,7 +333,7 @@ class StripeComponent extends React.Component {
                       Object.keys(requestBody.schema.properties).length === 0 && 'd-none'
                     } `}
                   >
-                    <h5 className="text-heading">{this.props.t('globals.requestBody', 'REQUEST BODY')}</h5>
+                    <h5 className="text-heading">{t('globals.requestBody', 'REQUEST BODY')}</h5>
                     <div
                       className={`${
                         Object.keys(requestBody.schema.properties).length >= 1 && 'input-group-parent-container'
@@ -390,4 +392,4 @@ class StripeComponent extends React.Component {
   }
 }
 
-export const Stripe = withTranslation()(StripeComponent);
+export const Stripe = StripeComponent;

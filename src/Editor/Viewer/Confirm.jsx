@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import { useTranslation } from 'react-i18next';
+
 
 export function Confirm({
   show,
@@ -16,7 +16,7 @@ export function Confirm({
   queryCancelData = null,
 }) {
   const [showModal, setShow] = useState(show);
-  const { t } = useTranslation();
+  const t = (_v, d) => d;
 
   useEffect(() => {
     setShow(show);
