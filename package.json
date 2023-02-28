@@ -2,6 +2,19 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://santi-meli.github.io/tooljet-POC",
+  "scripts": {
+    "start": "webpack serve --port 8083 --host 0.0.0.0",
+    "build": "webpack --mode=development",
+    "lint": "eslint . '**/*.{js,jsx}'",
+    "format": "eslint . --fix '**/*.{js,jsx}'",
+    "predeploy": "npm run build",
+    "deploy": "PRE_COMMIT_ALLOW_NO_CONFIG=1 gh-pages -d build",
+    "test": "jest"
+  },
+  "repository": {
+    "url": "git+https://github.com/santi-MELI/tooljet-POC.git"
+  },
   "dependencies": {
     "@dnd-kit/core": "^6.0.5",
     "@dnd-kit/sortable": "^7.0.1",
@@ -18,6 +31,7 @@
     "axios": "^0.24.0",
     "bootstrap": "^4.6.0",
     "classnames": "^2.3.1",
+    "copy-webpack-plugin": "^11.0.0",
     "date-fns": "^2.28.0",
     "deep-object-diff": "^1.1.7",
     "dompurify": "^2.2.7",
@@ -36,6 +50,7 @@
     "i18next-http-backend": "^1.4.1",
     "immer": "^9.0.6",
     "immutability-helper": "^3.1.1",
+    "json-loader": "^0.5.7",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.25",
     "lodash": "^4.17.21",
@@ -125,9 +140,9 @@
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-react": "^7.25.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "gh-pages": "^5.0.0",
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.3.2",
-    "jest": "^27.5.1",
     "node-sass": "^8.0.0",
     "path": "^0.12.7",
     "prettier": "^2.3.2",
@@ -144,41 +159,11 @@
       "react-dom": "16.14.0"
     }
   },
-  "scripts": {
-    "start": "webpack serve --port 8083 --host 0.0.0.0",
-    "build": "webpack --mode=production && cp -a ./assets/. ./build/assets/",
-    "lint": "eslint . '**/*.{js,jsx}'",
-    "format": "eslint . --fix '**/*.{js,jsx}'",
-    "test": "jest"
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
   "browserslist": {
     "production": [],
     "development": []
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.js?$": "babel-jest",
-      "^.+\\.jsx?$": "babel-jest",
-      "^.+\\.svg$": "<rootDir>/__mocks__/svg.js"
-    },
-    "transformIgnorePatterns": [
-      "node_modules/(?!(react|mpx-error-boundary)/)"
-    ],
-    "moduleNameMapper": {
-      "@/(.*)": "<rootDir>/src/$1"
-    },
-    "testEnvironment": "jest-environment-jsdom",
-    "moduleDirectories": [
-      "node_modules",
-      "src"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "jsx"
-    ]
   }
 }
