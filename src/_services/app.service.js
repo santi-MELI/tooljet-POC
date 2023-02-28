@@ -1,6 +1,5 @@
 import config from 'config';
 import { authHeader, handleResponse } from '@/_helpers';
-import { GET_ZERO, GET } from '../_mocks/app.service';
 
 export const appService = {
   getConfig,

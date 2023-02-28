@@ -1,6 +1,5 @@
 import config from 'config';
 import { authHeader, handleResponse } from '@/_helpers';
-import { GET } from '../_mocks/folder.service';
 
 export const folderService = {
   create,
@@ -12,7 +11,7 @@ export const folderService = {
 };
 
 async function getAll(searchKey = '') {
-  return GET;
+  return { folders: [] };
 }
 
 function create(name) {
