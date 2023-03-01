@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const sass = require('node-sass');
 
 const environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
@@ -104,6 +104,7 @@ module.exports = {
           },
           {
             loader: 'sass-loader',
+            options: { implementation: sass },
           },
         ],
       },
@@ -153,7 +154,7 @@ module.exports = {
   output: {
     publicPath: ASSET_PATH,
     path: path.resolve(__dirname, 'build'),
-    assetModuleFilename: "assets/[name][ext]",
+    assetModuleFilename: 'assets/[name][ext]',
   },
   externals: {
     // global app config object

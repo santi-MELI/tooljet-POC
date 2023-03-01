@@ -3,6 +3,7 @@ import Accordion from '@/_ui/Accordion';
 import { EventManager } from '../EventManager';
 import { renderElement } from '../Utils';
 
+const t = (_v, d) => d;
 
 export const Form = ({
   componentMeta,
@@ -70,7 +71,7 @@ export const baseComponentProperties = (
   let items = [];
   if (properties.length > 0) {
     items.push({
-      title: `${i18next.t('widget.common.properties', 'Properties')}`,
+      title: `${t('widget.common.properties', 'Properties')}`,
       children: properties.map((property) =>
         renderElement(
           component,
@@ -89,7 +90,7 @@ export const baseComponentProperties = (
 
   if (events.length > 0) {
     items.push({
-      title: `${i18next.t('widget.common.events', 'Events')}`,
+      title: `${t('widget.common.events', 'Events')}`,
       isOpen: true,
       children: (
         <EventManager
@@ -109,7 +110,7 @@ export const baseComponentProperties = (
 
   if (validations.length > 0) {
     items.push({
-      title: `${i18next.t('widget.common.validation', 'Validation')}`,
+      title: `${t('widget.common.validation', 'Validation')}`,
       children: validations.map((property) =>
         renderElement(
           component,
@@ -127,7 +128,7 @@ export const baseComponentProperties = (
   }
 
   items.push({
-    title: `${i18next.t('widget.common.general', 'General')}`,
+    title: `${t('widget.common.general', 'General')}`,
     isOpen: true,
     children: (
       <>
@@ -146,7 +147,7 @@ export const baseComponentProperties = (
   });
 
   items.push({
-    title: `${i18next.t('widget.common.layout', 'Layout')}`,
+    title: `${t('widget.common.layout', 'Layout')}`,
     isOpen: true,
     children: (
       <>
