@@ -1,23 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AppLogo from '@/_components/AppLogo';
-import { GlobalSettings } from './GlobalSettings';
 import EditAppName from './EditAppName';
 import HeaderActions from './HeaderActions';
-// import RealtimeAvatars from '../RealtimeAvatars';
 import { AppVersionsManager } from '../AppVersionsManager/List';
 import { ManageAppUsers } from '../ManageAppUsers';
 import { ReleaseVersionButton } from '../ReleaseVersionButton';
 import cx from 'classnames';
-// import config from 'config';
 
 export default function EditorHeader({
-  darkMode,
-  currentState,
   currentLayout,
-  globalSettingsChanged,
-  appDefinition,
-  toggleAppMaintenance,
   editingVersion,
   showCreateVersionModalPrompt,
   app,
@@ -39,8 +31,6 @@ export default function EditorHeader({
   onVersionRelease,
   saveEditingVersion,
 }) {
-  const { is_maintenance_on } = app;
-
   return (
     <div className="header">
       <header className="navbar navbar-expand-md navbar-light d-print-none">
@@ -60,13 +50,6 @@ export default function EditorHeader({
               <div className="col">
                 <div className="row p-2">
                   <div className="col global-settings-app-wrapper">
-                    <GlobalSettings
-                      currentState={currentState}
-                      globalSettingsChanged={globalSettingsChanged}
-                      globalSettings={appDefinition.globalSettings}
-                      toggleAppMaintenance={toggleAppMaintenance}
-                      is_maintenance_on={is_maintenance_on}
-                    />
                     <EditAppName appId={app.id} appName={app.name} onNameChanged={onNameChanged} />
                   </div>
 
@@ -113,9 +96,7 @@ export default function EditorHeader({
             <div className="d-flex">
               <div className="navbar-nav flex-row order-md-last release-buttons p-1">
                 <div className="nav-item me-1">
-                  {app.id && (
-                    <ManageAppUsers app={app} slug={slug} darkMode={darkMode} handleSlugChange={handleSlugChange} />
-                  )}
+                  {app.id && <ManageAppUsers app={app} slug={slug} handleSlugChange={handleSlugChange} />}
                 </div>
                 <div className="nav-item me-1">
                   <Link

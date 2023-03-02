@@ -1107,9 +1107,9 @@ export function renderTooltip({ props, text }) {
   );
 }
 
-export function computeComponentState(_ref, components = {}) {
+export function computeComponentState(currentState, components = {}) {
   let componentState = {};
-  const currentComponents = _ref.state.currentState.components;
+  const currentComponents = currentState.components;
   Object.keys(components).forEach((key) => {
     const component = components[key];
     const componentMeta = componentTypes.find((comp) => component.component.component === comp.component);
@@ -1144,15 +1144,12 @@ export function computeComponentState(_ref, components = {}) {
     }
   });
 
-  return setStateAsync(_ref, {
-    currentState: {
-      ..._ref.state.currentState,
-      components: {
-        ...componentState,
-      },
+  return {
+    ...currentState,
+    components: {
+      ...componentState,
     },
-    defaultComponentStateComputed: true,
-  });
+  };
 }
 
 export const getSvgIcon = (key, height = 50, width = 50, iconFile = undefined, styles = {}) => {

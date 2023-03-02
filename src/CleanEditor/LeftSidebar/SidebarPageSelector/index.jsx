@@ -25,7 +25,7 @@ const LeftSidebarPageSelector = ({
   unHidePage,
   updateHomePage,
   updatePageHandle,
-  pages,
+  pages = [],
   homePageId,
   showHideViewerNavigationControls,
   updateOnSortingPages,
@@ -64,7 +64,7 @@ const LeftSidebarPageSelector = ({
   const popoverContent = (
     <div>
       <div className="card-body p-0 pb-5" onClick={(event) => event.stopPropagation()}>
-        <HeaderSection darkMode={darkMode}>
+        {/* <HeaderSection darkMode={darkMode}>
           <HeaderSection.PanelHeader
             title="Pages"
             settings={
@@ -117,7 +117,7 @@ const LeftSidebarPageSelector = ({
               darkMode={darkMode}
             />
           )}
-        </HeaderSection>
+        </HeaderSection> */}
 
         <div className={`${darkMode && 'dark'} page-selector-panel-body`}>
           <div>

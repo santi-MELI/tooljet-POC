@@ -167,7 +167,7 @@ class ManageAppUsersComponent extends React.Component {
           animation={false}
           onEscapeKeyDown={this.hideModal}
           className="app-sharing-modal animation-fade"
-          contentClassName={this.props.darkMode ? 'theme-dark' : ''}
+          contentClassName={''}
         >
           <Modal.Header>
             <Modal.Title>{t('editor.share', 'Share')}</Modal.Title>
@@ -196,9 +196,7 @@ class ManageAppUsersComponent extends React.Component {
                 </div>
                 <div className="shareable-link mb-3">
                   <label className="form-label">
-                    <small>
-                      {t('editor.shareModal.shareableLink', 'Get shareable link for this application')}
-                    </small>
+                    <small>{t('editor.shareModal.shareableLink', 'Get shareable link for this application')}</small>
                   </label>
                   <div className="input-group">
                     <span className="input-group-text">{appLink}</span>
@@ -221,9 +219,7 @@ class ManageAppUsersComponent extends React.Component {
                     </div>
                     <span className="input-group-text">
                       <CopyToClipboard text={shareableLink} onCopy={() => toast.success('Link copied to clipboard')}>
-                        <button className="btn btn-secondary btn-sm">
-                          {t('editor.shareModal.copy', 'copy')}
-                        </button>
+                        <button className="btn btn-secondary btn-sm">{t('editor.shareModal.copy', 'copy')}</button>
                       </CopyToClipboard>
                     </span>
                     <div className="invalid-feedback">{slugError}</div>
@@ -232,25 +228,16 @@ class ManageAppUsersComponent extends React.Component {
                 <hr />
                 <div className="shareable-link mb-3">
                   <label className="form-label">
-                    <small>
-                      {t('editor.shareModal.embeddableLink', 'Get embeddable link for this application')}
-                    </small>
+                    <small>{t('editor.shareModal.embeddableLink', 'Get embeddable link for this application')}</small>
                   </label>
                   <div className="input-group">
-                    <Textarea
-                      disabled
-                      className={`input-with-icon ${this.props.darkMode && 'text-light'}`}
-                      rows={5}
-                      value={embeddableLink}
-                    />
+                    <Textarea disabled className={`input-with-icon`} rows={5} value={embeddableLink} />
                     <span className="input-group-text">
                       <CopyToClipboard
                         text={embeddableLink}
                         onCopy={() => toast.success('Embeddable link copied to clipboard')}
                       >
-                        <button className="btn btn-secondary btn-sm">
-                          {t('editor.shareModal.copy', 'copy')}
-                        </button>
+                        <button className="btn btn-secondary btn-sm">{t('editor.shareModal.copy', 'copy')}</button>
                       </CopyToClipboard>
                     </span>
                   </div>

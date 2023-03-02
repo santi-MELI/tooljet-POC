@@ -2,14 +2,12 @@ import React from 'react';
 import cx from 'classnames';
 
 function HeaderActions({ handleUndo, canUndo, handleRedo, canRedo, currentLayout, toggleCurrentLayout }) {
-  const darkMode = localStorage.getItem('darkMode') === 'true';
-
   return (
     <div className="editor-header-actions">
       <div style={{ borderRadius: 6, marginRight: 12 }}>
         <div
           className="d-flex align-items-center p-1 current-layout"
-          style={{ height: 28, background: darkMode ? '#2F3C4C' : '#ECEEF0', borderRadius: 6 }}
+          style={{ height: 28, background: '#ECEEF0', borderRadius: 6 }}
           role="tablist"
           aria-orientation="horizontal"
         >
@@ -72,7 +70,7 @@ function HeaderActions({ handleUndo, canUndo, handleRedo, canRedo, currentLayout
         height="44"
         viewBox="0 0 24 24"
         strokeWidth="1.5"
-        stroke={darkMode ? '#fff' : '#2c3e50'}
+        stroke={'#2c3e50'}
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -96,7 +94,7 @@ function HeaderActions({ handleUndo, canUndo, handleRedo, canRedo, currentLayout
         height="44"
         viewBox="0 0 24 24"
         strokeWidth="1.5"
-        stroke={darkMode ? '#fff' : '#2c3e50'}
+        stroke={'#2c3e50'}
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"

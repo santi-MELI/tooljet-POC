@@ -2,14 +2,14 @@ import '@/_styles/left-sidebar.scss';
 import React, { useState, useImperativeHandle, forwardRef, useEffect } from 'react';
 
 import { LeftSidebarInspector } from './SidebarInspector';
-import { LeftSidebarDataSources } from './SidebarDatasources';
-import { DarkModeToggle } from '../../_components/DarkModeToggle';
+// import { LeftSidebarDataSources } from './SidebarDatasources';
+// import { DarkModeToggle } from '../../_components/DarkModeToggle';
 import useRouter from '../../_hooks/use-router';
 import { LeftSidebarDebugger } from './SidebarDebugger';
-import { LeftSidebarComment } from './SidebarComment';
+// import { LeftSidebarComment } from './SidebarComment';
 import LeftSidebarPageSelector from './SidebarPageSelector';
 import { ConfirmDialog } from '@/_components';
-import config from 'config';
+// import config from 'config';
 
 export const LeftSidebar = forwardRef((props, ref) => {
   const router = useRouter();
@@ -73,8 +73,8 @@ export const LeftSidebar = forwardRef((props, ref) => {
 
   return (
     <div className="left-sidebar" data-cy="left-sidebar-inspector">
-      <LeftSidebarPageSelector
-        darkMode={darkMode}
+      {/* <LeftSidebarPageSelector /> */}
+      {/* <LeftSidebarPageSelector
         selectedSidebarItem={selectedSidebarItem}
         setSelectedSidebarItem={handleSelectedSidebarItem}
         appDefinition={appDefinition}
@@ -97,9 +97,8 @@ export const LeftSidebar = forwardRef((props, ref) => {
         apps={apps}
         dataQueries={dataQueries}
         popoverContentHeight={popoverContentHeight}
-      />
-      <LeftSidebarInspector
-        darkMode={darkMode}
+      /> */}
+      {/* <LeftSidebarInspector
         selectedSidebarItem={selectedSidebarItem}
         setSelectedSidebarItem={handleSelectedSidebarItem}
         currentState={currentState}
@@ -109,12 +108,10 @@ export const LeftSidebar = forwardRef((props, ref) => {
         runQuery={runQuery}
         dataSources={dataSources}
         popoverContentHeight={popoverContentHeight}
-      />
-      <LeftSidebarDataSources
-        darkMode={darkMode}
+      /> */}
+      {/* <LeftSidebarDataSources
         selectedSidebarItem={selectedSidebarItem}
         setSelectedSidebarItem={handleSelectedSidebarItem}
-        appId={appId}
         editingVersionId={appVersionsId}
         dataSources={dataSources}
         dataSourcesChanged={dataSourcesChanged}
@@ -122,37 +119,26 @@ export const LeftSidebar = forwardRef((props, ref) => {
         toggleDataSourceManagerModal={toggleDataSourceManagerModal}
         showDataSourceManagerModal={showDataSourceManagerModal}
         popoverContentHeight={popoverContentHeight}
-      />
-      {config.COMMENT_FEATURE_ENABLE && (
+      /> */}
+      {/* {config.COMMENT_FEATURE_ENABLE && (
         <LeftSidebarComment
           appVersionsId={appVersionsId}
           selectedSidebarItem={showComments ? 'comments' : ''}
           toggleComments={toggleComments}
           currentPageId={currentPageId}
         />
-      )}
+      )} */}
       <ConfirmDialog
         show={showLeaveDialog}
         message={'The unsaved changes will be lost if you leave the editor, do you want to leave?'}
         onConfirm={() => router.push('/')}
         onCancel={() => setShowLeaveDialog(false)}
-        darkMode={darkMode}
       />
       <div className="left-sidebar-stack-bottom">
-        <LeftSidebarDebugger
-          darkMode={darkMode}
+        {/* <LeftSidebarDebugger
           selectedSidebarItem={selectedSidebarItem}
           setSelectedSidebarItem={handleSelectedSidebarItem}
-          components={components}
-          errors={errorLogs}
-          debuggerActions={debuggerActions}
-          currentPageId={currentPageId}
-          popoverContentHeight={popoverContentHeight}
-        />
-        <div className="left-sidebar-item no-border">
-          <DarkModeToggle switchDarkMode={switchDarkMode} darkMode={darkMode} tooltipPlacement="right" />
-        </div>
-        {/* <LeftSidebarItem icon='support' className='left-sidebar-item' /> */}
+        /> */}
       </div>
     </div>
   );
